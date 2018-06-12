@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <base href="/">
+
+    <title>{{ 'I18N_EDITOR' | translate }}</title>
+    <!-- Titles font -->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <!-- Common font -->
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body ng-app="app">
+
+<div id="loading-overlay" ng-show="loading"><img src="./static/images/loading.svg" /></div>
+
+<header ng-include="'./partials/header.htm'"></header>
+
+<!-- Page content -->
+<main ng-include="'./partials/core.htm'"></main>
+
+
+<!-- jQuery library -->
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<!-- ANGULAR JS DEPENDENCIES -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.js"></script>
+<!-- Angular-translate -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.16.0/angular-translate.min.js"></script>
+<!-- Translations static file loader -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate-loader-static-files/2.17.1/angular-translate-loader-static-files.min.js"></script>
+<!-- ngStorage ($localStorage) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
+<!-- File uploader -->
+<script src="./node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+<!-- Smart table -->
+<script src="./node_modules/angular-smart-table/dist/smart-table.min.js"></script>
+
+<!-- JSZip -->
+<script src="./node_modules/jszip/dist/jszip.min.js"></script>
+
+<!-- FileSaver -->
+<script src="./node_modules/file-saver/FileSaver.min.js"></script>
+
+
+<!-- Google-translate-api -->
+<script src="./node_modules/google-translate-api/index.js"></script>
+
+
+<!-- Latest compiled and minified Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script src="./javascripts/app.js"></script>
+</body>
+</html>

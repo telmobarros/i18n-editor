@@ -1,0 +1,32 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" ng-controller="headerCtrl">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="./static/images/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            {{ 'I18N_EDITOR' | translate }}
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <button class="btn btn-outline-primary mr-sm-2" data-toggle="modal" data-target="#addModal"><i class="fas fa-plus"></i> {{ 'ADD' | translate }}</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-info mr-sm-2" data-toggle="modal" data-target="#downloadModal"><i class="fas fa-download"></i> {{ 'DOWNLOAD' | translate }}</button>
+                </li>
+                <li class="nav-item">
+                    <select class="form-control" ng-model="selectedLanguage" ng-change="changeLanguage()">
+                        <option value="en">{{ 'ENGLISH' | translate }}</option>
+                        <option value="pt">{{ 'PORTUGUESE' | translate }}</option>
+                    </select>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="btn btn-light my-2 my-sm-0"><i class="far fa-question-circle"></i> {{ 'HELP' | translate }}</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

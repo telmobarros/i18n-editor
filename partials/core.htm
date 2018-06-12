@@ -1,0 +1,223 @@
+<div  ng-controller="coreCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <p>{{ 'DESCRIPTION' | translate }}</p>
+                <br>
+            </div>
+            <div class="col-12 col-md-5">
+                <!-- <button class="btn btn-block">{{ 'UPLOAD_FILE' | translate}}</button> -->
+                <div ngf-drop ngf-select ng-model="files" class="drop-box"
+                     ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true">{{ 'DROP_HERE' | translate}}</div>
+                <!-- accept="image/*,application/pdf"
+                ngf-pattern="'image/*,application/pdf'" -->
+            </div>
+            <div class="col-12 col-md-2 text-center" style="margin-top: 10px;">
+                <h4 class="font-weight-bold align-middle">{{ "OR" | translate}}</h4>
+            </div>
+            <div class="col-12 col-md-5">
+                <div class="form-group">
+                    <label for="localeSelect1">{{ 'SELECT_LOCALE' | translate}}</label>
+                    <select class="form-control" id="localeSelect1" ng-model="newEmptyLanguage">
+                        <option ng-repeat="(key, value) in locales" value="{{key}}">{{value}}</option>
+                    </select>
+                </div>
+                <p>{{newEmptyLanguage}}</p>
+                <button type="button" class="btn btn-block btn-primary" ng-click="addEmptyLanguage()" data-dismiss="modal">{{ 'ADD_TRANSLATION_EMPTY' | translate}}</button>
+            </div>
+            <div class="col-12 text-center">
+                <br>
+                <hr>
+                <p>{{ 'DOWNLOAD_DESCRIPTION' | translate }}</p>
+                <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#downloadModal"><i class="fas fa-download"></i> {{ 'DOWNLOAD' | translate }}</button>
+                <hr>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <table st-table="displayedKeys" st-safe-src="keys" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="align-middle">{{ 'KEYS' | translate }}</th>
+                    </tr>
+                    <!-- <tr>
+                        <th class="align-middle">
+                            <input st-search placeholder="{{ 'SEARCH' | translate }}" class="input-sm form-control" type="search"/>
+                        </th>
+                    </tr> -->
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="key in displayedKeys">
+                        <td class="align-middle">
+                            <div class="row">
+                                <div class="col-auto mr-auto">{{key}}</div>
+                                <div class="col-auto"><button type="button" class="btn btn-sm btn-danger" ng-click="deleteKey(key)"><i class="fas fa-times"></i></button></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">
+                            <div class="input-group">
+                                <input type="text" class="form-control" ng-model="newKey" placeholder="{{ 'NEW_KEY' | translate }}" aria-label="{{ 'NEW_KEY' | translate }}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-success" type="button" ng-click="addKey()"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <!-- <tfoot>
+                    <tr>
+                        <td colspan="{{ translations.length + 1 }}" class="text-center">
+                            <div st-pagination="" st-items-by-page="20" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                    </tfoot> -->
+                </table>
+            </div>
+            <div class="col-6 col-md-8 col-lg-9 col-xl-10" style="overflow-x:scroll;">
+                <table st-table="displayedTranslations" st-safe-src="translations" class="table table-striped" ng-if="translations.length > 0"  style="overflow-x:scroll; width:{{translations.length * 400}}px;">
+                    <thead>
+                    <tr>
+                        <th ng-repeat="translation in displayedTranslations">
+                            <div class="input-group">
+                                <input type="text" class="form-control font-weight-bold" ng-model="translation.name">
+                                <div class="input-group-append">
+                                    <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#deleteConfirmationModal" ng-click="setSelectedTranslation(translation.name)"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                    <!-- <tr>
+                        <th colspan="{{ displayedTranslations.length }}">
+                            <input st-search placeholder="{{ 'SEARCH' | translate }}" class="input-sm form-control" type="search"/>
+                        </th>
+                    </tr> -->
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="key in keys">
+                        <td ng-repeat="translation in displayedTranslations">
+                            <textarea class="form-control" rows="2" ng-model="translation.data[key]"></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="{{ displayedTranslations.length }}"></td>
+                    </tr>
+                    </tbody>
+                    <!-- <tfoot>
+                    <tr>
+                        <td colspan="{{ displayedTranslations.length }}" class="text-center">
+                            <div st-pagination="" st-items-by-page="20" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                    </tfoot> -->
+                </table>
+                <h3 class="text-center" ng-if="translations.length == 0">{{ 'NO_TRANSLATIONS' | translate }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addModalLabel">{{ 'ADD_TRANSLATION' | translate}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- <button class="btn btn-block">{{ 'UPLOAD_FILE' | translate}}</button> -->
+                                <div ngf-drop ngf-select ng-model="files" class="drop-box"
+                                     ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true">{{ 'DROP_HERE' | translate}}</div>
+                                <!-- accept="image/*,application/pdf"
+                                ngf-pattern="'image/*,application/pdf'" -->
+                            </div>
+                            <div class="col-12 text-center" style="margin-top: 10px;">
+                                <h4 class="font-weight-bold">{{ "OR" | translate}}</h4>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="localeSelect2">{{ 'SELECT_LOCALE' | translate}}</label>
+                                    <select class="form-control" id="localeSelect2" ng-model="newEmptyLanguage">
+                                        <option ng-repeat="(key, value) in locales" value="{{key}}">{{value}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <p>{{newEmptyLanguage}}</p>
+                            </div>
+                            <div class="col-12">
+                                <button type="button" class="btn btn-block btn-primary" ng-click="addEmptyLanguage()" data-dismiss="modal">{{ 'ADD_TRANSLATION_EMPTY' | translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="downloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="downloadModalLabel">{{ 'DOWNLOAD' | translate }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6>{{ 'FILES_TO_BE_DOWNLOAD' | translate }}</h6>
+                            </div>
+                            <div class="col-12 text-center">
+                                <ul class="list-group list-group-flush">
+                                    <li ng-repeat="translation in translations" class="list-group-item">{{translation.name}}</li>
+                                </ul>
+                            </div>
+                            <div class="col-12">
+                                <button type="button" class="btn btn-block btn-success" data-dismiss="modal" ng-click="download()">{{ 'DOWNLOAD_FILES' | translate }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmationModalLabel">{{ 'DELETE_CONFIRMATION' | translate }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="text-center">{{ 'DELETE_CONFIRMATION_TEXT_1' | translate }}</h6>
+                    <p class="text-center">{{ selectedTranslation }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteSelectedTranslation()">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

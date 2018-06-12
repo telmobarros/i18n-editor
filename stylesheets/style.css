@@ -1,0 +1,26 @@
+main {
+    padding-top: 80px;
+}
+
+th {
+    height: 65px;
+}
+
+td {
+    height: 90px;
+}
+
+@media (max-width: 991.98px) {
+    nav .navbar-nav button, nav .navbar-nav a, nav .navbar-nav select{
+        width: 100%;
+        margin: 5px 0px;
+    }
+}
+
+.drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    width: 100%;
+    text-align: center;
+    padding: 50px 10px;
+}
