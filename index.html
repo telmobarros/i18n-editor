@@ -8,7 +8,10 @@
     <meta name="author" content="">
     <base href="/">
 
-    <title>{{ 'I18N_EDITOR' | translate }}</title>
+    <title>i18n-editor</title>
+
+    <link rel="shortcut icon" type="image/png" href="./static/images/logo.png"/>
+
     <!-- Titles font -->
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <!-- Common font -->
@@ -21,6 +24,14 @@
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+			google_ad_client: "ca-pub-3329909189565842",
+			enable_page_level_ads: true
+		});
+    </script>
 </head>
 <body ng-app="app">
 
@@ -47,20 +58,15 @@
 <!-- ngStorage ($localStorage) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
 <!-- File uploader -->
-<script src="./node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.min.js" integrity="sha256-TqtYHg6/i06jaAnqVU0twQV7dROa7Um8CpqElzK9024=" crossorigin="anonymous"></script>
 <!-- Smart table -->
-<script src="./node_modules/angular-smart-table/dist/smart-table.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-smart-table/2.1.11/smart-table.min.js" integrity="sha256-+Vv2BYQhkWVvDxvLEuCHqx/aKOsS/CEIfBRG+w3aMzs=" crossorigin="anonymous"></script>
 
 <!-- JSZip -->
-<script src="./node_modules/jszip/dist/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" integrity="sha256-PZ/OvdXxEW1u3nuTAUCSjd4lyaoJ3UJpv/X11x2Gi5c=" crossorigin="anonymous"></script>
 
 <!-- FileSaver -->
-<script src="./node_modules/file-saver/FileSaver.min.js"></script>
-
-
-<!-- Google-translate-api -->
-<script src="./node_modules/google-translate-api/index.js"></script>
-
+<script src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
 
 <!-- Latest compiled and minified Bootstrap JavaScript -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>

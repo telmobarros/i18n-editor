@@ -251,14 +251,5 @@ app.controller('coreCtrl', function($scope, $http, $timeout, fileReader, CacheSe
 	$scope.$watch('translations', function () {
 		CacheService.setTranslations($scope.translations);
 	});
-
-	translate('Ik spreek Engels', {to: 'en'}).then(function(res) {
-		console.log(res.text);
-		//=> I speak English
-		console.log(res.from.language.iso);
-		//=> nl
-	}).catch(function(err) {
-		console.error(err);
-	});
 });
 /* CONTROLLERS END */
