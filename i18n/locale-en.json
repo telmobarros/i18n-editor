@@ -1,2 +1,1 @@
-{
-}
+{"I18N_EDITOR":"i18n-editor","ADD":"Add","DOWNLOAD":"Download","ENGLISH":"English","PORTUGUESE":"Portuguese","HELP":"Help","DESCRIPTION":"This editor aims to simplify the process of creating and editing files to be used by the i18n module.","DROP_HERE":"Drop your i18n translation files here.","OR":"OR","SELECT_LOCALE":"Select one language to creeate an empty translation:","ADD_TRANSLATION_EMPTY":"Add new translation","KEYS":"Keys","NEW_KEY":"New key","DOWNLOAD_DESCRIPTION":"Once you finish, click here to download your translation files.","DOWNLOAD_FILES":"Download files","CLOSE":"Close","ADD_TRANSLATION":"Add translation","FILES_TO_BE_DOWNLOAD":"The following files will be downloaded:"}
