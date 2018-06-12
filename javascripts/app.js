@@ -98,7 +98,7 @@ app.config(function ($translateProvider) {
 	// Security measure
 	$translateProvider.useSanitizeValueStrategy('escape');
 	$translateProvider.useStaticFilesLoader({
-		prefix: '/i18n/locale-',
+		prefix: './i18n/locale-',
 		suffix: '.json'
 	});
 	$translateProvider.preferredLanguage('en');
